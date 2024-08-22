@@ -1,0 +1,21 @@
+{
+  "name": "namaskaram-react",
+  "version": "1.0.0",
+  "description": "namaskaram react",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "namaskaram react"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "aviansh sharma",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
