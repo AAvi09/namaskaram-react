@@ -21,3 +21,11 @@
   font-family: sans-serif;
   font-size: 15px;
 }
+.res-card {
+  width: 200px;
+  height: 300px;
+  border: 1px solid black;
+}
+.search {
+  padding: 10px;
+}

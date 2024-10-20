@@ -9,6 +9,8 @@ import ReactDOM from "react-dom/client";
  * - search
  * - Restraunt container
  *   - Restraunt card
+ *   -----Img
+ *   -----Name of res,star rating,cuisine,delivery time
  * Footer
  * - copyright
  * - links
@@ -35,10 +37,29 @@ const Header = () => {
     </div>
   );
 };
+const Rescard = () => {
+  return (
+    <div className="res-card">
+      <h3>meghna foods</h3>
+    </div>
+  );
+};
+
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search">search</div>
+      <div className="res-container">
+        <Rescard />
+      </div>
+    </div>
+  );
+};
 const AppLayout = () => {
   return (
     <div className="app">
       <Header />
+      <Body />
     </div>
   );
 };
