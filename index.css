@@ -1,8 +1,42 @@
 .header {
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+  align-items: center; /* Ensure items are vertically centered */
+  padding: 10px 20px; /* Add padding for better spacing */
+  background-color: #be4f4f; /* Light grey background */
+  border-bottom: 2px solid #ddd; /* Bottom border for subtle separation */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  font-family: "Arial", sans-serif; /* Clean font */
+  border-radius: 10px;
 }
+
+.header a {
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Dark color for text */
+  padding: 5px 15px; /* Add some padding to links */
+  font-size: 16px; /* Make the text size comfortable */
+}
+
+.header a:hover {
+  color: #39ff14; /* Neon green color on hover */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.logo {
+  font-size: 24px; /* Increase size for the logo */
+  font-weight: bold; /* Make it bold */
+  color: #333;
+  transition: 0.4s ease-in-out;
+}
+.logo:hover {
+  transform: scale(1.5);
+}
+
+.nav-items {
+  display: flex;
+  gap: 20px; /* Space between navigation items */
+}
+
 .logo {
   width: 70px;
   padding: 10px;
@@ -26,16 +60,16 @@
   flex-wrap: wrap;
 }
 .res-card {
-  margin: 10px;
+  margin: 18px;
   width: 200px;
-  height: 350px;
+  /* height: 350px; */
   border: 1px solid #ddd;
   border-radius: 10px;
   background-image: url("https://thumbs.dreamstime.com/b/fast-food-logo-design-concepts-set-unique-ideas-pizza-kebab-burger-retro-elements-symbols-icons-46091401.jpg"); /* Background image set */
   background-size: cover; /* Image will cover the entire card */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent image from repeating */
-  box-shadow: 0 4px 8px rgba(50, 100, 200, 0.1); /* Optional: Add some shadow for effect */
+  box-shadow: 0 4px 8px #395124; /* Optional: Add some shadow for effect */
   transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth transition */
   position: relative; /* For content positioning inside the card */
   overflow: hidden; /* Make sure content doesn't overflow outside the card */
@@ -49,6 +83,7 @@
 }
 .res-logo {
   width: 100%;
+  height: 150px;
 }
 .tag {
   position: absolute;
