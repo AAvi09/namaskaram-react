@@ -12,7 +12,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
-              (res) => res.info.avgRatingStar > 4.2
+              (res) => res.info.avgRating > 3.5
             );
             setListOfRestaurants(filteredList);
           }}
