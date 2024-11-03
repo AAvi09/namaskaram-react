@@ -2,6 +2,7 @@ import React from "react";
 import Rescard from "./Rescard";
 import resList from "../utils/mockdata";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer.js";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -21,10 +22,9 @@ const Body = () => {
     );
   };
 
-  if (listOfRestaurants.length === 0) {
-    return <h1>Loading......</h1>;
-  }
-  return (
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
