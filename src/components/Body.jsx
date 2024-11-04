@@ -6,6 +6,9 @@ import Shimmer from "./Shimmer.js";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [searchValue, setSearchValue] = useState(" ");
+  console.log("body render");
+  //   console.log(setSearchValue);
 
   useEffect(() => {
     fetchData();
@@ -27,6 +30,13 @@ const Body = () => {
   ) : (
     <div className="body">
       <div className="filter">
+        <input
+          type="text"
+          className="search-box"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
+        <button onClick={(e) => setSearchValue(e.target.value)}>Search</button>
         <button
           className="filter-btn"
           onClick={() => {
