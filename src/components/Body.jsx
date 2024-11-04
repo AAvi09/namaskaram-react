@@ -6,6 +6,7 @@ import Shimmer from "./Shimmer.js";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredListRes, setFilterdListRes] = useState([]);
   const [searchValue, setSearchValue] = useState(" ");
   console.log("body render");
   //   console.log(setSearchValue);
@@ -23,6 +24,9 @@ const Body = () => {
     setListOfRestaurants(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilterdListRes(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   return listOfRestaurants.length === 0 ? (
@@ -36,7 +40,16 @@ const Body = () => {
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <button onClick={(e) => setSearchValue(e.target.value)}>Search</button>
+        <button
+          onClick={() => {
+            const filteredList = listOfRestaurants.filter((res) =>
+              res?.info?.name?.toLowerCase().includes(searchValue)
+            );
+            setFilterdListRes(filteredList);
+          }}
+        >
+          Search
+        </button>
         <button
           className="filter-btn"
           onClick={() => {
@@ -50,7 +63,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants.map((restaurant) => (
+        {filteredListRes.map((restaurant) => (
           <Rescard key={restaurant.info.id} resdata={restaurant} />
         ))}
       </div>
