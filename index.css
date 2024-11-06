@@ -61,7 +61,7 @@
 }
 .res-card {
   margin: 18px;
-  width: 200px;
+  width: 180px;
   /* height: 350px; */
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -122,7 +122,7 @@
 
 .shimmer-card {
   margin: 18px;
-  width: 200px;
+  width: 180px;
   height: 400px;
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
@@ -143,4 +143,20 @@
   background-color: orangered;
   border: 5px solid white;
   cursor: pointer;
+}
+.error-container {
+  border: 2px solid white;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: 50px 250px;
+}
+.error-box {
+  position: relative;
+  border: 5px solid red;
+  width: 500px;
+  margin: 20px;
+  padding: 20px;
+  background-image: linear-gradient(to right, red, darkred);
+  border-radius: 25px;
 }
