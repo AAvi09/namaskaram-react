@@ -22,7 +22,7 @@ const MenuItemCard = ({ item }) => {
   return (
     <div className="menu-item-card">
       <img
-        src={CDN_URL + imageId}
+        src={imageId ? CDN_URL + imageId : "/path/to/placeholder/image.jpg"} // Conditional rendering
         // Replace with actual image server URL
         alt={name}
         className="item-image"
@@ -53,17 +53,24 @@ const MenuItemCard = ({ item }) => {
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
-  //   console.log(params);
+  // console.log(params);
   useEffect(() => {
-    FetchData();
-  }, []);
+    // Check if resId exists before calling FetchData
+    if (resId) {
+      FetchData();
+    }
+  }, [resId]);
   const FetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5930976&lng=77.3969121&restaurantId=98999&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const json = await data.json();
-    console.log(json);
-    setResInfo(json.data);
+    try {
+      const data = await fetch(
+        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5930976&lng=77.3969121&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
+      );
+      const json = await data.json();
+      console.log(json);
+      setResInfo(json.data);
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    }
   };
   //   const { name } = resInfo?.cards?.[2].card?.card?.info;
   if (resInfo === null) {
@@ -74,7 +81,11 @@ const RestaurantMenu = () => {
       <h1>{resInfo?.cards?.[2].card?.card?.info.name}</h1>
       <div>
         <img
-          src={CDN_URL + resInfo?.cards?.[2].card?.card?.info.cloudinaryImageId}
+          src={
+            resInfo?.cards?.[2]?.card?.card?.info?.cloudinaryImageId
+              ? CDN_URL + resInfo.cards[2].card.card.info.cloudinaryImageId
+              : "/path/to/placeholder/image.jpg"
+          } // Conditional rendering
           alt="Restaurant Image"
         />
       </div>
