@@ -2,14 +2,26 @@ import React from "react";
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import MyImage from "../images/istockphoto-1319625327-612x612.jpg";
+import pouchImage from "../images/Save-Money-On-Groceries_UBC-Food-Services.jpg";
+
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
 
   return (
     <div className="header">
-      <div>
-        <img className="logo" src={LOGO_URL} />
+      <div className="left-image">
+        <img src={MyImage} height="200" width="300" />
       </div>
+      <span className="center-image">
+        <img src={pouchImage} height="200" width="350" />
+      </span>
+      <div>
+        <Link to="/">
+          <img className="logo" src={LOGO_URL} />
+        </Link>
+      </div>
+
       <div className="nav-items">
         <ul>
           <li>
