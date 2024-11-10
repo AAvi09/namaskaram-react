@@ -400,7 +400,8 @@ a {
 }
 .carousel {
   position: relative;
-  width: 100%;
+  width: 50%;
+  height: 50%;
   max-width: 600px;
   margin: auto;
   overflow: hidden;
@@ -423,7 +424,8 @@ a {
 }
 
 .carousel-image {
-  width: 100%;
+  width: 50%;
+  height: 50%;
   height: auto;
   border-radius: 10px;
 }

@@ -92,7 +92,7 @@ const Body = () => {
         </button>
       </div>
       <div>
-        <Carousel items={foodItems} />
+        <Carousel items={foodItems} interval={1000} />
       </div>
       <div className="res-container">
         {filteredListRes.map((restaurant) => (

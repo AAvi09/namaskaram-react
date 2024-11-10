@@ -1,7 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Carousel = ({ items }) => {
+const Carousel = ({ items, interval }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === items.length - 1 ? 0 : prevIndex + 1
+      );
+    }, interval);
+    console.log(hi);
+    return () => clearInterval(slideInterval);
+  }, [items.length, interval]);
 
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) =>
