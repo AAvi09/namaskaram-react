@@ -4,6 +4,7 @@ import resList from "../utils/mockdata";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
+import Carousel from "./carousel.jsx";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -11,6 +12,33 @@ const Body = () => {
   const [searchValue, setSearchValue] = useState(" ");
   console.log("body render");
   //   console.log(setSearchValue);
+  const foodItems = [
+    {
+      name: "Samosa",
+      image:
+        "https://blog.pureindianfoods.com/wp-content/uploads/2018/10/indian-samosas-600x400.jpg",
+    },
+    {
+      name: "Paneer Tikka",
+      image:
+        "https://www.cookwithmanali.com/wp-content/uploads/2015/07/Restaurant-Style-Recipe-Paneer-Tikka.jpg",
+    },
+    {
+      name: "Biryani",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/5/5a/%22Hyderabadi_Dum_Biryani%22.jpg",
+    },
+    {
+      name: "Dosa",
+      image:
+        "https://www.daringgourmet.com/wp-content/uploads/2023/06/Dosa-Recipe-3.jpg",
+    },
+    {
+      name: "Chole Bhature",
+      image:
+        "https://i0.wp.com/kalimirchbysmita.com/wp-content/uploads/2019/10/Chole-Bhature-01.jpg?fit=1024%2C682&ssl=1",
+    },
+  ];
 
   useEffect(() => {
     fetchData();
@@ -62,6 +90,9 @@ const Body = () => {
         >
           Top Rated Restaurant
         </button>
+      </div>
+      <div>
+        <Carousel items={foodItems} />
       </div>
       <div className="res-container">
         {filteredListRes.map((restaurant) => (
