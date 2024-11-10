@@ -25,6 +25,10 @@
   margin: 0;
   display: block;
   z-index: 1;
+  transition: 0.3s ease-out;
+}
+.left-image:hover {
+  transform: scale(1.2);
 }
 .center-image {
   width: 100%;
@@ -40,6 +44,10 @@
   display: block;
   z-index: 0;
   left: 500px;
+  transition: 0.3s ease-out;
+}
+.center-image:hover {
+  transform: scale(1.2);
 }
 .header a {
   text-decoration: none; /* Remove underline from links */
