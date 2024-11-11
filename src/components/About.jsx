@@ -6,8 +6,8 @@ const About = () => {
     <div>
       <h1>About</h1>
       <h2>This is swiggy clone building ......</h2>
-      <Users />
-      <UserClass />
+      <Users name={"Avinash sharma(function)"} />
+      <UserClass name={"Avi(class)"} location={"chaand pe he apun"} />
     </div>
   );
 };
