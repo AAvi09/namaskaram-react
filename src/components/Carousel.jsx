@@ -4,13 +4,13 @@ const Carousel = ({ items, interval }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const slideInterval = setInterval(() => {
+    const slideInterval = setTimeout(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex === items.length - 1 ? 0 : prevIndex + 1
       );
     }, interval);
     console.log(hi);
-    return () => clearInterval(slideInterval);
+    return () => clearTimeout(slideInterval);
   }, [items.length, interval]);
 
   const handlePrevious = () => {

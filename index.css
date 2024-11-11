@@ -454,3 +454,8 @@ a {
 .carousel-button.next {
   right: 10px;
 }
+.user-card {
+  border: 2px solid black;
+  padding: 20px;
+  margin: 5px;
+}
