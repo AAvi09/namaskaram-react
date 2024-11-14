@@ -9,6 +9,7 @@ class About extends Component {
     console.log("parent constructor");
   }
   render() {
+    console.log("parent render");
     return (
       <div>
         <h1>About</h1>

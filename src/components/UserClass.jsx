@@ -8,8 +8,10 @@ class UserClass extends React.Component {
       count: 0,
       count2: 2,
     };
+    console.log("child constructor");
   }
   render() {
+    console.log("child render");
     return (
       <div className="user-card">
         <h1>Count : {this.state.count}</h1>
