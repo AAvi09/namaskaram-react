@@ -459,3 +459,6 @@ a {
   padding: 20px;
   margin: 5px;
 }
+.search-box {
+  border-radius: 30px;
+}

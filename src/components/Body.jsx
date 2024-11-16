@@ -67,6 +67,7 @@ const Body = () => {
           type="text"
           className="search-box"
           value={searchValue}
+          placeholder="Enter restaurant name here....."
           onChange={(e) => setSearchValue(e.target.value)}
         />
         <button
