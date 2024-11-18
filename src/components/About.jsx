@@ -9,7 +9,7 @@ class About extends Component {
     console.log("parent constructor");
   }
   componentDidMount() {
-    console.log("parent componet did mount");
+    console.log("parent component did mount");
   }
   render() {
     console.log("parent render");
@@ -19,6 +19,8 @@ class About extends Component {
         <h2>This is swiggy clone building ......</h2>
         <Users name={"Avinash sharma(function)"} />
         <UserClass name={"Avi(class)"} location={"chaand pe he apun"} />
+        <UserClass name={"second(class)"} location={"mangal"} />
+        <UserClass name={"third(class)"} location={"rahu"} />
       </div>
     );
   }
