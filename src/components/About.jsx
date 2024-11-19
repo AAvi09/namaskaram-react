@@ -1,6 +1,6 @@
 import Users from "./Users";
 import UserClass from "./UserClass";
-import { Component } from "react";
+// import { Component } from "react";
 
 class About extends Component {
   constructor(props) {

@@ -10,8 +10,11 @@ class UserClass extends React.Component {
     };
     console.log("child constructor");
   }
-  componentDidMount() {
-    console.log("render");
+  async componentDidMount() {
+    // console.log("render");
+    const data = await fetch("https://api.github.com/users/AAvi09");
+    const json = await data.json();
+    console.log(json);
   }
   render() {
     console.log("child render");
