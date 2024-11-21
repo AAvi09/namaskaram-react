@@ -29,6 +29,7 @@ class UserClass extends React.Component {
         <img src={this.state.userInfo.avatar_url} />
         <h1> {this.state.userInfo.name}</h1>
         <h2>{this.state.userInfo.location}</h2>
+        <h3>{this.state.userInfo.Login}</h3>
         {/* <button
           onClick={() => {
             this.setState({
