@@ -30,6 +30,7 @@ class UserClass extends React.Component {
         <h1> {this.state.userInfo.name}</h1>
         <h2>{this.state.userInfo.location}</h2>
         <h3>{this.state.userInfo.login}</h3>
+        <h4>{this.state.userInfo.bio}</h4>
         {/* <button
           onClick={() => {
             this.setState({
