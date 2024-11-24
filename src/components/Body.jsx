@@ -98,9 +98,9 @@ const Body = () => {
           Top Rated Restaurant
         </button>
       </div>
-      <div>
+      {/* <div>
         <Carousel items={foodItems} interval={1000} />
-      </div>
+      </div> */}
       <div className="res-container">
         {filteredListRes.map((restaurant) => (
           <Link

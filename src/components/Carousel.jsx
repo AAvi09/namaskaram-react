@@ -9,7 +9,7 @@ const Carousel = ({ items, interval }) => {
         prevIndex === items.length - 1 ? 0 : prevIndex + 1
       );
     }, interval);
-    console.log(hi);
+
     return () => clearTimeout(slideInterval);
   }, [items.length, interval]);
 
