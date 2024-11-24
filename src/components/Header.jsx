@@ -12,21 +12,30 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
+    <div className="flex h-[150px] justify-between bg-red-600 relative">
       <div className="left-image">
-        <img src={MyImage} height="200" width="300" />
+        <img
+          src={MyImage}
+          className="w-1/2 h-1/2 object-cover  rounded-full rotate-[-10deg] transition ease-in-out duration-300 hover:scale-105"
+        />
       </div>
       <span className="center-image">
-        <img src={pouchImage} height="200" width="350" />
+        <img
+          src={pouchImage}
+          className="w-3/2 h-1/2 object-cover rounded-full rotate-[-15deg] transition ease-in-out duration-300 hover:scale-105"
+        />
       </span>
-      <div>
+      <div className="absolute top-[50%] left-[5%] transform -translate-y-1/2 justify-between p-50">
         <Link to="/">
-          <img className="logo" src={LOGO_URL} />
+          <img
+            className="w-32 h-32 rounded-1/4 transition duration-300 ease-in-out hover:scale-110 hover:shadow-lg"
+            src={LOGO_URL}
+          />
         </Link>
       </div>
 
       <div className="nav-items">
-        <ul>
+        <ul className="flex justify-between p-10 m-4 space-x-10">
           <li>onlinestatus : {onlineStatus ? "🟢" : "🔴"}</li>
           <li>
             <Link to="/">Home🏠</Link>
