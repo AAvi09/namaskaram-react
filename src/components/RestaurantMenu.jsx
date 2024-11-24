@@ -53,7 +53,7 @@ const MenuItemCard = ({ item }) => {
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
-  const resInfo = useRestaurantMenu(resId);
+  resInfo = useRestaurantMenu(resId);
 
   if (resInfo === null) {
     return <Shimmer />;
