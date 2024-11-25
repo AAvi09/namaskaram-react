@@ -12,7 +12,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="flex h-[150px] justify-between bg-red-600 relative">
+    <div className="flex h-[150px] justify-between bg-yellow-100 relative shadow-lg mb-3">
       <div className="left-image">
         <img
           src={MyImage}
