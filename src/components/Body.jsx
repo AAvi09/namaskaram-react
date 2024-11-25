@@ -1,45 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Rescard from "./Rescard";
-import resList from "../utils/mockdata";
-import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
-import Carousel from "./carousel.jsx";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredListRes, setFilterdListRes] = useState([]);
-  const [searchValue, setSearchValue] = useState(" ");
-  console.log("body render");
-  //   console.log(setSearchValue);
-  const foodItems = [
-    {
-      name: "Samosa",
-      image:
-        "https://blog.pureindianfoods.com/wp-content/uploads/2018/10/indian-samosas-600x400.jpg",
-    },
-    {
-      name: "Paneer Tikka",
-      image:
-        "https://www.cookwithmanali.com/wp-content/uploads/2015/07/Restaurant-Style-Recipe-Paneer-Tikka.jpg",
-    },
-    {
-      name: "Biryani",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5a/%22Hyderabadi_Dum_Biryani%22.jpg",
-    },
-    {
-      name: "Dosa",
-      image:
-        "https://www.daringgourmet.com/wp-content/uploads/2023/06/Dosa-Recipe-3.jpg",
-    },
-    {
-      name: "Chole Bhature",
-      image:
-        "https://i0.wp.com/kalimirchbysmita.com/wp-content/uploads/2019/10/Chole-Bhature-01.jpg?fit=1024%2C682&ssl=1",
-    },
-  ];
+  const [searchValue, setSearchValue] = useState(""); // Initialize the searchValue state here
+
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -50,7 +20,6 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5930976&lng=77.3969121&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
     setListOfRestaurants(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -59,22 +28,25 @@ const Body = () => {
     );
   };
 
-  const onlineStatus = useOnlineStatus();
-
   if (onlineStatus === false)
-    return <h1>Looks you are offline please check your internet connection</h1>;
+    return (
+      <h1>
+        Looks like you are offline. Please check your internet connection.
+      </h1>
+    );
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="flex items-center justify-center p-x-10 m-10 space-x-8 ">
+      {/* Search and Filter Section */}
+      <div className="flex flex-col md:flex-row items-center justify-center px-10 py-6 space-y-4 md:space-y-0 md:space-x-8">
         <input
           type="text"
-          className=" relative w-80 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500"
+          className="w-full md:w-80 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 transition-transform transform hover:scale-105"
           value={searchValue}
-          placeholder="Enter restaurant name here....."
-          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder="Enter restaurant name here..."
+          onChange={(e) => setSearchValue(e.target.value)} // Update state on input change
         />
         <button
           onClick={() => {
@@ -83,30 +55,30 @@ const Body = () => {
             );
             setFilterdListRes(filteredList);
           }}
-          className="  transform -translate-y-1/5 right-3 inset-y-0 left-3 p-4 m-4 top-5 bg-orange-500 text-white-500 rounded-lg hover:text-gray-800"
+          className="px-6 py-2 bg-orange-500 text-white rounded-full hover:bg-blue-600 hover:scale-110 transition-transform"
         >
-          🔍Search
+          🔍 Search
         </button>
         <button
-          className="filter-btn"
+          className="px-6 py-2 bg-green-700 text-white rounded-full hover:bg-green-600 hover:scale-110 transition-transform"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 3.5
             );
-            setListOfRestaurants(filteredList);
+            setFilterdListRes(filteredList);
           }}
         >
-          Top Rated Restaurant
+          Top Rated Restaurants
         </button>
       </div>
-      {/* <div>
-        <Carousel items={foodItems} interval={1000} />
-      </div> */}
-      <div className="res-container">
+
+      {/* Restaurant List Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-10">
         {filteredListRes.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
+            className="transform hover:scale-105 transition-transform"
           >
             <Rescard resdata={restaurant} />
           </Link>

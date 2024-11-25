@@ -1,5 +1,6 @@
+import { CDN_URL } from "../utils/constants.js";
 import React from "react";
-import { CDN_URL } from "../utils/constants";
+
 const Rescard = (props) => {
   const { resdata } = props;
 
@@ -11,19 +12,21 @@ const Rescard = (props) => {
     sla,
     costForTwo,
   } = resdata?.info;
+
   return (
-    <div className="res-card">
-      <span className="tag">promoted</span>
+    <div className="p-4 h-full border rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between">
       <img
-        className="res-logo"
+        className="w-full h-40 object-cover rounded-md mb-4"
         alt="res-logo"
-        src={CDN_URL + resdata.info.cloudinaryImageId}
+        src={CDN_URL + cloudinaryImageId}
       />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRatingString}⭐</h4>
-      <h4>{sla.deliveryTime}🕰</h4>
-      <h4>{costForTwo}</h4>
+      <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+      <h4 className="text-sm text-gray-500 mt-1">{cuisines.join(", ")}</h4>
+      <h4 className="text-sm font-medium text-green-600 mt-2">
+        {avgRatingString}⭐
+      </h4>
+      <h4 className="text-sm text-gray-600 mt-1">{sla.deliveryTime} min 🕰</h4>
+      <h4 className="text-sm text-gray-600 mt-1">{costForTwo}</h4>
     </div>
   );
 };

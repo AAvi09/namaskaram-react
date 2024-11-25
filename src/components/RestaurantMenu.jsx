@@ -1,6 +1,6 @@
 import useRestaurantMenu from "../utils/useRestaurant.js";
 import Shimmer from "./Shimmer.js";
-import { CDN_URL, MENU_API } from "../utils/constants";
+import { CDN_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
 
 // MenuItemCard Component
@@ -16,32 +16,38 @@ const MenuItemCard = ({ item }) => {
     itemAttribute,
     ratings,
     imageId,
-    cloudinaryImageId,
   } = item.card?.info;
 
   return (
-    <div className="menu-item-card">
+    <div className="p-4 border rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300">
       <img
-        src={imageId ? CDN_URL + imageId : "/path/to/placeholder/image.jpg"} // Conditional rendering
-        // Replace with actual image server URL
+        src={imageId ? CDN_URL + imageId : "https://via.placeholder.com/150"}
         alt={name}
-        className="item-image"
+        className="w-full h-32 object-cover rounded-md"
       />
-      <div className="item-details">
-        <div className="item-header">
-          <h3 className="item-name">{name}</h3>
+      <div className="mt-4">
+        <div className="flex justify-between items-center">
+          <h3 className="text-lg font-semibold">{name}</h3>
           {isBestseller && (
-            <span className="bestseller-ribbon">{ribbon?.text}</span>
+            <span className="text-xs bg-yellow-500 text-white px-2 py-1 rounded">
+              {ribbon?.text}
+            </span>
           )}
         </div>
-        <p className="item-category">{category}</p>
-        <p className="item-description">{description}</p>
-        <p className="item-price">₹{(price / 100).toFixed(2)}</p>
-        <p className={`veg-classifier ${isVeg ? "veg" : "non-veg"}`}>
+        <p className="text-sm text-gray-500 mt-1">{category}</p>
+        <p className="text-sm text-gray-700 mt-2">{description}</p>
+        <p className="text-lg font-medium text-green-600 mt-3">
+          ₹{(price / 100).toFixed(2)}
+        </p>
+        <p
+          className={`mt-2 text-sm font-medium ${
+            isVeg ? "text-green-500" : "text-red-500"
+          }`}
+        >
           {itemAttribute?.vegClassifier}
         </p>
         {ratings?.aggregatedRating?.rating && (
-          <p className="item-rating">
+          <p className="text-sm text-gray-600 mt-1">
             Rating: {ratings.aggregatedRating.rating}
           </p>
         )}
@@ -50,36 +56,48 @@ const MenuItemCard = ({ item }) => {
   );
 };
 
+// RestaurantMenu Component
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
-  resInfo = useRestaurantMenu(resId);
+  const resInfo = useRestaurantMenu(resId);
 
-  if (resInfo === null) {
+  if (!resInfo) {
     return <Shimmer />;
   }
+
+  const restaurantInfo = resInfo?.cards?.[2]?.card?.card?.info || {};
+  const menuItems =
+    resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[3]?.card
+      ?.card?.itemCards || [];
+
   return (
-    <div className="menu">
-      <h1>{resInfo?.cards?.[2].card?.card?.info.name}</h1>
-      <div>
+    <div className="p-6">
+      {/* Restaurant Details */}
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold">{restaurantInfo.name}</h1>
         <img
           src={
-            resInfo?.cards?.[2]?.card?.card?.info?.cloudinaryImageId
-              ? CDN_URL + resInfo.cards[2].card.card.info.cloudinaryImageId
-              : "/path/to/placeholder/image.jpg"
-          } // Conditional rendering
-          alt="Restaurant Image"
+            restaurantInfo.cloudinaryImageId
+              ? CDN_URL + restaurantInfo.cloudinaryImageId
+              : "https://via.placeholder.com/400"
+          }
+          alt="Restaurant"
+          className="w-48 h-48 object-cover rounded-lg mx-auto mt-4"
         />
+        <h3 className="text-xl mt-4 text-gray-700">
+          {restaurantInfo.cuisines?.join(", ")}
+        </h3>
+        <h3 className="text-lg text-gray-600 mt-2">
+          {restaurantInfo.costForTwoMessage}
+        </h3>
       </div>
-      <h3>{resInfo?.cards?.[2].card?.card?.info.cuisines.join(", ")}</h3>
-      <h3>{resInfo?.cards?.[2].card?.card?.info.costForTwoMessage}</h3>
-      <h2>Menu</h2>
-      <div className="menu-items">
-        {resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[3]?.card?.card?.itemCards?.map(
-          (item, index) => (
-            <MenuItemCard key={index} item={item} />
-          )
-        )}
+
+      {/* Menu Items */}
+      <h2 className="text-2xl font-semibold mb-6">Menu</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {menuItems.map((item, index) => (
+          <MenuItemCard key={index} item={item} />
+        ))}
       </div>
     </div>
   );
