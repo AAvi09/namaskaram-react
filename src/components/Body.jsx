@@ -68,10 +68,10 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="flex items-center justify-center p-x-10 m-10 space-x-8 relative">
+      <div className="flex items-center justify-center p-x-10 m-10 space-x-8 ">
         <input
           type="text"
-          className="w-80 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500"
+          className=" relative w-80 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500"
           value={searchValue}
           placeholder="Enter restaurant name here....."
           onChange={(e) => setSearchValue(e.target.value)}
@@ -83,7 +83,7 @@ const Body = () => {
             );
             setFilterdListRes(filteredList);
           }}
-          className="  transform -translate-y-1/2 right-3 inset-y-0 left-3 bg-slate-500 text-white-500 rounded-lg hover:text-gray-800"
+          className="  transform -translate-y-1/5 right-3 inset-y-0 left-3 p-4 m-4 top-5 bg-orange-500 text-white-500 rounded-lg hover:text-gray-800"
         >
           🔍Search
         </button>
