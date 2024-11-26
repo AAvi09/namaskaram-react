@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Rescard from "./Rescard";
+import Rescard, { WithPromotedLabel } from "./Rescard";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
+import CarouselData from "./CarouselData.jsx";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredListRes, setFilterdListRes] = useState([]);
   const [searchValue, setSearchValue] = useState(""); // Initialize the searchValue state here
+
+  console.log(listOfRestaurants);
+
+  const RescardWithLabel = WithPromotedLabel(Rescard);
 
   const onlineStatus = useOnlineStatus();
 
@@ -39,6 +44,10 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
+      <div>
+        <CarouselData />
+        {console.log("mein idhhr hun")}
+      </div>
       {/* Search and Filter Section */}
       <div className="flex flex-col md:flex-row items-center justify-center px-10 py-6 space-y-4 md:space-y-0 md:space-x-8">
         <input
@@ -80,7 +89,11 @@ const Body = () => {
             to={"/restaurant/" + restaurant.info.id}
             className="transform hover:scale-105 transition-transform"
           >
-            <Rescard resdata={restaurant} />
+            {restaurant.info.promoted ? (
+              <RescardWithLabel resdata={restaurant} />
+            ) : (
+              <Rescard resdata={restaurant} />
+            )}
           </Link>
         ))}
       </div>

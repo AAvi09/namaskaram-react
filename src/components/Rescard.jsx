@@ -31,4 +31,14 @@ const Rescard = (props) => {
   );
 };
 
+export const WithPromotedLabel = (Rescard) => {
+  return (props) => {
+    return (
+      <div>
+        <label>Promoted</label>
+        <Rescard {...props} />
+      </div>
+    );
+  };
+};
 export default Rescard;

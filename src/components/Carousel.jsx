@@ -1,52 +1,19 @@
-import { useState, useEffect } from "react";
+import React from "react";
 
-const Carousel = ({ items, interval }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const slideInterval = setTimeout(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === items.length - 1 ? 0 : prevIndex + 1
-      );
-    }, interval);
-
-    return () => clearTimeout(slideInterval);
-  }, [items.length, interval]);
-
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? items.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === items.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+const Carousel = ({ carouselItem }) => {
+  // const { CarData } = props;
+  const { id, imageId, text } = carouselItem;
 
   return (
-    <div className="carousel">
-      <button className="carousel-button prev" onClick={handlePrevious}>
-        &#10094;
-      </button>
-      <div className="carousel-images">
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className={`carousel-item ${
-              index === currentIndex ? "active" : ""
-            }`}
-          >
-            <img src={item.image} alt={item.name} className="carousel-image" />
-            <h3 className="carousel-caption">{item.name}</h3>
-          </div>
-        ))}
-      </div>
-      <button className="carousel-button next" onClick={handleNext}>
-        &#10095;
-      </button>
+    <div className="relative w-full flex flex-col items-center">
+      <img
+        src={imageId}
+        alt={`Carousel Item ${id}`}
+        className="w-60 h-60 object-cover rounded-lg shadow-lg mb-4"
+      />
+      <span className="text-lg font-medium text-gray-700">{text}</span>
     </div>
   );
 };
+
 export default Carousel;
