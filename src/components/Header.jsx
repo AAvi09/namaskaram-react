@@ -12,7 +12,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="flex h-[150px] justify-between bg-yellow-100 relative shadow-lg mb-3">
+    <div className="flex h-[150px] justify-between bg-green-800 relative shadow-lg mb-3">
       <div className="left-image">
         <img
           src={MyImage}
@@ -34,32 +34,59 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className="nav-items">
-        <ul className="flex justify-between p-10 m-4 space-x-10">
-          <li>onlinestatus : {onlineStatus ? "🟢" : "🔴"}</li>
-          <li>
-            <Link to="/">Home🏠</Link>
+      <div className="nav-items bg-green-700 shadow-md">
+        <ul className="flex items-center justify-between p-4 md:p-6 space-x-3 md:space-x-10">
+          <li className="text-sm md:text-base font-medium text-black-700 justify-between space-x-2">
+            Online Status: {onlineStatus ? "🟢" : "🔴"}
           </li>
           <li>
-            <Link to="/about">About🔎 </Link>
+            <Link
+              to="/"
+              className="text-sm md:text-base font-medium text-black-700 bg-orange-500 rounded-xl p-3  hover:transition-transform duration-300 ease-in-out hover:scale-90 hover:text-blue-600
+ "
+            >
+              Home🏠
+            </Link>
           </li>
           <li>
-            <Link to="/contact">Contact☎</Link>
+            <Link
+              to="/about"
+              className="text-sm md:text-base font-medium text-black-700 hover:text-blue-600 bg-orange-500 p-3 rounded-xl"
+            >
+              About🔎
+            </Link>
           </li>
-          <li>Cart🛒 </li>
           <li>
-            <Link to="/grocery">Grocery🍅🍠🥕</Link>
+            <Link
+              to="/contact"
+              className="text-sm md:text-base font-medium text-black-700 hover:text-blue-600 bg-orange-500 p-3 rounded-xl "
+            >
+              Contact☎
+            </Link>
           </li>
-          <button
-            className="login-btn"
-            onClick={() => {
-              loginBtn === "Login"
-                ? setLoginBtn("Logout")
-                : setLoginBtn("Login");
-            }}
-          >
-            {loginBtn}
-          </button>
+          <li className="text-sm md:text-base font-medium text-black-700 bg-orange-500 p-3 rounded-xl  ">
+            Cart🛒
+          </li>
+          <li>
+            <Link
+              to="/grocery"
+              className="text-sm md:text-base font-medium text-black-700 hover:text-blue-600 bg-orange-500  p-3 rounded-xl "
+            >
+              Grocery🍅
+            </Link>
+          </li>
+          <li>
+            <button
+              className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors shadow-md"
+              onClick={() => {
+                loginBtn === "Login"
+                  ? setLoginBtn("Logout")
+                  : setLoginBtn("Login");
+              }}
+            >
+              {loginBtn}
+            </button>
+          </li>
         </ul>
       </div>
     </div>
