@@ -70,6 +70,11 @@ const RestaurantMenu = () => {
     resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[3]?.card
       ?.card?.itemCards || [];
 
+  console.log(
+    resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[3]?.card
+      ?.card?.itemCards
+  );
+
   return (
     <div className="p-6">
       {/* Restaurant Details */}

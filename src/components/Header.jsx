@@ -12,7 +12,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="flex h-[150px] justify-between bg-green-800 relative shadow-lg mb-3">
+    <div className="flex h-[150px] justify-between bg-white-800 relative shadow-lg mb-3">
       <div className="left-image">
         <img
           src={MyImage}
@@ -34,7 +34,7 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className="nav-items bg-green-700 shadow-md">
+      <div className="nav-items bg-white-800 shadow-md">
         <ul className="flex items-center justify-between p-4 md:p-6 space-x-3 md:space-x-10">
           <li className="text-sm md:text-base font-medium text-black-700 justify-between space-x-2">
             Online Status: {onlineStatus ? "🟢" : "🔴"}
@@ -42,7 +42,7 @@ const Header = () => {
           <li>
             <Link
               to="/"
-              className="text-sm md:text-base font-medium text-black-700 bg-orange-500 rounded-xl p-3  hover:transition-transform duration-300 ease-in-out hover:scale-90 hover:text-blue-600
+              className="text-sm md:text-base bg-white-800 font-medium text-black-700 hover:bg-gray-200 rounded-full p-3  hover:transition-transform duration-300 ease-in-out hover:scale-90 
  "
             >
               Home🏠
@@ -51,7 +51,7 @@ const Header = () => {
           <li>
             <Link
               to="/about"
-              className="text-sm md:text-base font-medium text-black-700 hover:text-blue-600 bg-orange-500 p-3 rounded-xl"
+              className="text-sm md:text-base bg-white-800 font-medium text-black-700   hover:bg-gray-200 p-3 rounded-full"
             >
               About🔎
             </Link>
@@ -59,18 +59,18 @@ const Header = () => {
           <li>
             <Link
               to="/contact"
-              className="text-sm md:text-base font-medium text-black-700 hover:text-blue-600 bg-orange-500 p-3 rounded-xl "
+              className="text-sm md:text-base font-medium text-black-700 bg-white-800   hover:bg-gray-200 p-3 rounded-full "
             >
               Contact☎
             </Link>
           </li>
-          <li className="text-sm md:text-base font-medium text-black-700 bg-orange-500 p-3 rounded-xl  ">
+          <li className="text-sm md:text-base font-medium text-black-700 bg-white-800   hover:bg-gray-200 p-3 rounded-full  ">
             Cart🛒
           </li>
           <li>
             <Link
               to="/grocery"
-              className="text-sm md:text-base font-medium text-black-700 hover:text-blue-600 bg-orange-500  p-3 rounded-xl "
+              className="text-sm md:text-base font-medium text-black-700   p-3 bg-white-800   hover:bg-gray-200  rounded-full "
             >
               Grocery🍅
             </Link>
