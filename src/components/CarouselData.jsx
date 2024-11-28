@@ -3,6 +3,7 @@ import { CDN_URL } from "../utils/constants"; // Assuming you have the CDN_URL c
 
 const CarouselData = () => {
   const [listOfCarousel, setListOfCarousel] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const CarouselData = () => {
     );
     const json = await data.json();
     setListOfCarousel(json?.data?.cards?.[0].card?.card?.imageGridCards?.info);
+    setIsLoading(false);
   };
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -35,7 +37,7 @@ const CarouselData = () => {
         {/* Left Button */}
         <button
           onClick={scrollLeft}
-          className="p-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-all "
+          className="p-2 px-2 bg-gray-300 rounded-full hover:bg-gray-400 transition-all "
         >
           ←
         </button>
@@ -45,18 +47,24 @@ const CarouselData = () => {
           ref={scrollRef}
           className="flex overflow-x-auto space-x-4 w-full scrollbar-hide"
         >
-          {listOfCarousel.map((item, index) => (
-            <div
-              key={index}
-              className="flex-none w-48 h-48 bg-gray-200 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-110"
-            >
-              <img
-                src={CDN_URL + item.imageId}
-                alt={`carousel-item-${index}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
+          {isLoading
+            ? Array(6)
+                .fill(0)
+                .map((_, index) => (
+                  <div className="flex-none w-48 h-48 bg-gray-200 rounded-lg animate-pulse"></div>
+                ))
+            : listOfCarousel.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex-none w-48 h-48 bg-gray-200 rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-110"
+                >
+                  <img
+                    src={CDN_URL + item.imageId}
+                    alt={`carousel-item-${index}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
         </div>
 
         {/* Right Button */}
