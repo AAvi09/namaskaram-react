@@ -6,7 +6,7 @@ const LocationDetector = () => {
   const [longitude, setLongitude] = useState(null);
 
   //function to detect user's current location
-  const detectLocation = () => {
+  const detectLocation = ({ onLocationUpdate }) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -15,6 +15,11 @@ const LocationDetector = () => {
           setLocation(
             `Lat : ${position.coords.latitude} , Lng : ${position.coords.longitude}`
           );
+          if (onLocationUpdate) {
+            onLocationUpdate(latitude, longitude);
+          } else {
+            console.log(`onLocationUpdate prop is not passed`);
+          }
         },
         (error) => {
           alert(`unable to detect location, please enter manually `);
@@ -26,8 +31,13 @@ const LocationDetector = () => {
   };
 
   // function to handle location manually
-  const handleLocationInput = (e) => {
-    setLocation(e.target.value);
+  const handleLocationInput = (e, type) => {
+    if (type === "latitude") {
+      setLatitude(e.target.value);
+    } else if (type === "longitude") {
+      setLongitude(e.target.value);
+    }
+    // setLocation(e.target.value);
   };
 
   const submitLocation = () => {
@@ -35,6 +45,19 @@ const LocationDetector = () => {
       alert(`your location isset to : ${location}`);
     } else {
       alert(`please enter or detect your location`);
+    }
+  };
+
+  const handleUpdateLocation = ({ onLocationManualUpdate }) => {
+    if (onLocationManualUpdate) {
+      const success = onLocationManualUpdate(latitude, longitude);
+      if (success) {
+        setLocation(`Lat: ${latitude}, Lng: ${longitude}`);
+      } else {
+        alert("Error: Location can't be updated.");
+      }
+    } else {
+      alert("Error: onLocationManualUpdate prop is missing!");
     }
   };
 
@@ -60,9 +83,17 @@ const LocationDetector = () => {
         <input
           id="manualLocation"
           type="text"
-          value={location}
-          onChange={handleLocationInput}
-          placeholder="Enter your city, area or address"
+          value={latitude}
+          onChange={(e) => handleLocationInput(e, "latitude")}
+          placeholder="Enter your location Latitude"
+          className="w-full p-2 border rounded-md"
+        />
+        <input
+          id="manualLocation"
+          type="text"
+          value={longitude}
+          onChange={(e) => handleLocationInput(e, "longitude")}
+          placeholder="Enter your location Longitude"
           className="w-full p-2 border rounded-md"
         />
       </div>
@@ -71,6 +102,13 @@ const LocationDetector = () => {
         className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
       >
         Confirm Location
+      </button>
+      <line className="justify-between">🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️🏴‍☠️</line>
+      <button
+        onClick={handleUpdateLocation}
+        className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
+      >
+        update Location
       </button>
       {latitude && longitude && (
         <p className="mt-4 text-sm text-gray-500">

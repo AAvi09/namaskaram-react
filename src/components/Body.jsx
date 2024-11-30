@@ -7,9 +7,13 @@ import CarouselData from "./CarouselData.jsx";
 import LocationDetector from "./LocationDetector.jsx";
 
 const Body = () => {
+  const [latitude, setLatitude] = useState(28.5930976); // Default latitude
+  const [longitude, setLongitude] = useState(77.3969121); // Default longitude
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredListRes, setFilterdListRes] = useState([]);
   const [searchValue, setSearchValue] = useState(""); // Initialize the searchValue state here
+
+  console.log("Latitude:", latitude, "Longitude:", longitude);
 
   console.log(listOfRestaurants);
 
@@ -18,12 +22,12 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData(latitude, longitude);
+  }, [latitude, longitude]);
 
-  const fetchData = async () => {
+  const fetchData = async (lat, lng) => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5930976&lng=77.3969121&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
     );
     const json = await data.json();
     setListOfRestaurants(
@@ -46,7 +50,18 @@ const Body = () => {
   ) : (
     <div className="body">
       <div>
-        <LocationDetector />
+        <LocationDetector
+          onLocationUpdate={(lat, lng) => {
+            setLatitude(lat);
+            setLongitude(lng);
+          }}
+          onLocationManualUpdate={(lat, lng) => {
+            setLatitude(lat);
+            setLongitude(lng);
+            return true; // Success case
+          }}
+        />
+
         <CarouselData />
         {console.log("mein idhhr hun")}
       </div>
