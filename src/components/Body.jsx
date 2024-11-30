@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 import CarouselData from "./CarouselData.jsx";
+import LocationDetector from "./LocationDetector.jsx";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -45,6 +46,7 @@ const Body = () => {
   ) : (
     <div className="body">
       <div>
+        <LocationDetector />
         <CarouselData />
         {console.log("mein idhhr hun")}
       </div>
