@@ -42,7 +42,7 @@ const Header = () => {
           <li>
             <Link
               to="/"
-              className="text-sm md:text-base bg-white-800 font-medium text-black-700 hover:bg-gray-200 rounded-full p-3  hover:transition-transform duration-300 ease-in-out hover:scale-90 
+              className="text-xl md:text-base bg-white-800 font-medium text-black-700 hover:bg-gray-200 rounded-full p-3  hover:transition-transform duration-300 ease-in-out hover:scale-90 
  "
             >
               Home🏠

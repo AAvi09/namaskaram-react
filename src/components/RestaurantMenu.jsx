@@ -2,6 +2,7 @@ import useRestaurantMenu from "../utils/useRestaurant.js";
 import Shimmer from "./Shimmer.js";
 import { CDN_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
+import RestaurantCategory from "./RestaurantCategory.jsx";
 
 // MenuItemCard Component
 const MenuItemCard = ({ item }) => {
@@ -66,6 +67,7 @@ const RestaurantMenu = () => {
   }
 
   const restaurantInfo = resInfo?.cards?.[2]?.card?.card?.info || {};
+  // console.log(restaurantInfo);
   const menuItems =
     resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[3]?.card
       ?.card?.itemCards || [];
@@ -74,7 +76,22 @@ const RestaurantMenu = () => {
     resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[3]?.card
       ?.card?.itemCards
   );
+  const regularCards =
+    resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
 
+  const categories = [];
+
+  regularCards.forEach((card) => {
+    if (
+      card?.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    ) {
+      categories.push(card.card.card);
+    }
+  });
+
+  console.log("Filtered Categories:", categories);
+  console.log(Array.isArray(categories));
   return (
     <div className="p-6">
       {/* Restaurant Details */}
@@ -102,6 +119,11 @@ const RestaurantMenu = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {menuItems.map((item, index) => (
           <MenuItemCard key={index} item={item} />
+        ))}
+      </div>
+      <div>
+        {categories.map((category) => (
+          <RestaurantCategory data={categories.title} />
         ))}
       </div>
     </div>
