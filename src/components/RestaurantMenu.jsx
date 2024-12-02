@@ -122,9 +122,16 @@ const RestaurantMenu = () => {
         ))}
       </div>
       <div>
-        {categories.map((category) => (
-          <RestaurantCategory data={categories.title} />
-        ))}
+        <h2 className="text-2xl font-semibold mb-6">Categories</h2>
+        <div>
+          {categories.map((category, index) => (
+            <RestaurantCategory
+              key={index}
+              data={category.title}
+              itemCards={category.itemCards.length}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
