@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer.js";
 import { CDN_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import RestaurantCategory from "./RestaurantCategory.jsx";
+// import ItemList from "./ItemList.jsx";
 
 // MenuItemCard Component
 const MenuItemCard = ({ item }) => {
@@ -129,6 +130,7 @@ const RestaurantMenu = () => {
               key={index}
               data={category.title}
               itemCards={category.itemCards.length}
+              items={category.itemCards}
             />
           ))}
         </div>
