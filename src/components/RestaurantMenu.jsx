@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer.js";
 import { CDN_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import RestaurantCategory from "./RestaurantCategory.jsx";
+import { useState } from "react";
 // import ItemList from "./ItemList.jsx";
 
 // MenuItemCard Component
@@ -60,6 +61,9 @@ const MenuItemCard = ({ item }) => {
 
 // RestaurantMenu Component
 const RestaurantMenu = () => {
+  const [showItems, setShowItems] = useState(false);
+  const [showIndex, setShowIndex] = useState(null);
+
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
 
@@ -131,6 +135,8 @@ const RestaurantMenu = () => {
               data={category.title}
               itemCards={category.itemCards.length}
               items={category.itemCards}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(index)}
             />
           ))}
         </div>
