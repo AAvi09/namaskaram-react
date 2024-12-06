@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import MyImage from "../images/istockphoto-1319625327-612x612.jpg";
 import pouchImage from "../images/Save-Money-On-Groceries_UBC-Food-Services.jpg";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
+  const { loggedInUser } = useContext(UserContext);
 
   const onlineStatus = useOnlineStatus();
 
@@ -86,6 +89,7 @@ const Header = () => {
             >
               {loginBtn}
             </button>
+            <li>{loggedInUser}</li>
           </li>
         </ul>
       </div>
