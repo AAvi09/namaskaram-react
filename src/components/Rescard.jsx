@@ -1,9 +1,11 @@
 import { CDN_URL } from "../utils/constants.js";
 import React from "react";
+import UserContext from "../utils/UserContext.js";
+import { useContext } from "react";
 
 const Rescard = (props) => {
+  const { loggedInUser, userType } = useContext(UserContext);
   const { resdata } = props;
-
   const {
     cloudinaryImageId,
     name,
@@ -27,6 +29,10 @@ const Rescard = (props) => {
       </h4>
       <h4 className="text-sm text-gray-600 mt-1">{sla.deliveryTime} min 🕰</h4>
       <h4 className="text-sm text-gray-600 mt-1">{costForTwo}</h4>
+      <h4>
+        {loggedInUser}***
+        {userType}
+      </h4>
     </div>
   );
 };

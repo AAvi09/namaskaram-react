@@ -35,14 +35,14 @@ const Header = () => {
       </div>
 
       <div className="nav-items bg-white-800 shadow-md">
-        <ul className="flex items-center justify-between p-4 md:p-6 space-x-3 md:space-x-10">
-          <li className="text-sm md:text-base font-medium text-black-700 justify-between space-x-2">
+        <ul className="flex items-center justify-between p-4 md:p-6 space-x-3 md:space-x-5">
+          <li className="text-xs md:text-base font-bold text-black-700 justify-between space-x-1">
             Online Status: {onlineStatus ? "🟢" : "🔴"}
           </li>
           <li>
             <Link
               to="/"
-              className="text-xl md:text-base bg-white-800 font-medium text-black-700 hover:bg-gray-200 rounded-full p-3  hover:transition-transform duration-300 ease-in-out hover:scale-90 
+              className="text-xs md:text-base bg-white-800 font-medium text-black-700 hover:bg-gray-200 rounded-full p-3  hover:transition-transform duration-300 ease-in-out hover:scale-90 
  "
             >
               Home🏠
@@ -51,7 +51,7 @@ const Header = () => {
           <li>
             <Link
               to="/about"
-              className="text-sm md:text-base bg-white-800 font-medium text-black-700   hover:bg-gray-200 p-3 rounded-full"
+              className="text-xs md:text-base bg-white-800 font-medium text-black-700   hover:bg-gray-200 p-3 rounded-full"
             >
               About🔎
             </Link>
@@ -59,18 +59,18 @@ const Header = () => {
           <li>
             <Link
               to="/contact"
-              className="text-sm md:text-base font-medium text-black-700 bg-white-800   hover:bg-gray-200 p-3 rounded-full "
+              className="text-xs md:text-base font-medium text-black-700 bg-white-800   hover:bg-gray-200 p-3 rounded-full "
             >
               Contact☎
             </Link>
           </li>
-          <li className="text-sm md:text-base font-medium text-black-700 bg-white-800   hover:bg-gray-200 p-3 rounded-full  ">
+          <li className="text-xs md:text-base font-medium text-black-700 bg-white-800   hover:bg-gray-200 p-3 rounded-full  ">
             Cart🛒
           </li>
           <li>
             <Link
               to="/grocery"
-              className="text-sm md:text-base font-medium text-black-700   p-3 bg-white-800   hover:bg-gray-200  rounded-full "
+              className="text-xs md:text-base font-medium text-black-700   p-3 bg-white-800   hover:bg-gray-200  rounded-full "
             >
               Grocery🍅
             </Link>
