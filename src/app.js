@@ -39,7 +39,7 @@ const AppLayout = () => {
     setUserInfo(data.name);
   }, []);
   return (
-    <UserContext.Provider value={{ loggedInUser: userInfo }}>
+    <UserContext.Provider value={{ loggedInUser: userInfo, setUserInfo }}>
       <div className="app">
         <Header />
         <Outlet />

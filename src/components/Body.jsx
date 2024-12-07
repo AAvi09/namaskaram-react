@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 import CarouselData from "./CarouselData.jsx";
 import LocationDetector from "./LocationDetector.jsx";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext.js";
 
 const Body = () => {
   const [latitude, setLatitude] = useState(28.5930976); // Default latitude
@@ -12,6 +14,8 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredListRes, setFilterdListRes] = useState([]);
   const [searchValue, setSearchValue] = useState(""); // Initialize the searchValue state here
+
+  const { loggedInUser, setUserInfo } = useContext(UserContext);
 
   console.log("Latitude:", latitude, "Longitude:", longitude);
 
@@ -61,6 +65,15 @@ const Body = () => {
             return true; // Success case
           }}
         />
+        <label>
+          {" "}
+          enter username :{" "}
+          <input
+            className="border border-black p-2 "
+            value={loggedInUser}
+            onChange={(e) => setUserInfo(e.target.value)}
+          />
+        </label>
 
         <CarouselData />
         {console.log("mein idhhr hun")}
