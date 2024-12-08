@@ -39,12 +39,12 @@ const AppLayout = () => {
     setUserInfo(data.name);
   }, []);
   return (
-    <UserContext.Provider value={{ loggedInUser: userInfo, setUserInfo }}>
-      <div className="app">
+    <div className="app">
+      <UserContext.Provider value={{ loggedInUser: userInfo, setUserInfo }}>
         <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+      </UserContext.Provider>
+      <Outlet />
+    </div>
   );
 };
 const AppRouter = createBrowserRouter([
