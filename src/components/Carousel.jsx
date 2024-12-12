@@ -9,7 +9,7 @@ const Carousel = ({ carouselItem }) => {
       <img
         src={imageId}
         alt={`Carousel Item ${id}`}
-        className="w-60 h-60 object-cover rounded-lg shadow-lg mb-4"
+        className="w-30 h-30 object-cover rounded-lg shadow-lg mb-4"
       />
       <span className="text-lg font-medium text-gray-700">{text}</span>
     </div>
