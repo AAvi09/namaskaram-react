@@ -7,12 +7,15 @@ import pouchImage from "../images/Save-Money-On-Groceries_UBC-Food-Services.jpg"
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
   const { loggedInUser } = useContext(UserContext);
 
   const onlineStatus = useOnlineStatus();
+
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex h-[150px] justify-between bg-white-800 relative shadow-lg mb-3">
@@ -67,8 +70,11 @@ const Header = () => {
               Contact☎
             </Link>
           </li>
-          <li className="text-xs md:text-base font-medium text-black-700 bg-white-800   hover:bg-gray-200 p-3 rounded-full  ">
-            Cart🛒
+          <li
+            to="/cart"
+            className="text-xs md:text-base font-medium text-black-700 bg-white-800   hover:bg-gray-200 p-3 rounded-full  "
+          >
+            Cart🛒-{cartItems.length}
           </li>
           <li>
             <Link
