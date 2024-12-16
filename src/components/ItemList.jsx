@@ -1,10 +1,16 @@
 import React from "react";
 import veglogo from "../images/veglogo.png";
 import nonveglogo from "../images/nonveglogo.png";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 // import { CDN_URL } from "../utils/constants.js";
 
 const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
   console.log(items);
 
   return (
@@ -16,7 +22,10 @@ const ItemList = ({ items }) => {
         >
           <div className="flex justify-between p-4 bg-gray-200 rounded-lg font-bold ">
             <div className="relative">
-              <button className="text-white font-bold  bg-black rounded-md p-1 m-1 h-7 x-10  hover:bg-green-800 shadow-lg absolute top-1 left-12">
+              <button
+                className="text-white font-bold  bg-black rounded-md p-1 m-1 h-7 x-10  hover:bg-green-800 shadow-lg absolute top-1 left-12"
+                onClick={() => handleAddItem(item)}
+              >
                 ADD+
               </button>
               <img

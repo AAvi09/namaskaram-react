@@ -16,6 +16,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <div className="flex h-[150px] justify-between bg-white-800 relative shadow-lg mb-3">
@@ -70,11 +71,13 @@ const Header = () => {
               Contact☎
             </Link>
           </li>
-          <li
-            to="/cart"
-            className="text-xs md:text-base font-medium text-black-700 bg-white-800   hover:bg-gray-200 p-3 rounded-full  "
-          >
-            Cart🛒-{cartItems.length}
+          <li>
+            <Link
+              to="/cart"
+              className="text-xs md:text-base font-medium text-black-700 bg-white-800 cursor : pointer  hover:bg-gray-200 p-3 rounded-full  "
+            >
+              Cart🛒-{cartItems.length}
+            </Link>
           </li>
           <li>
             <Link
