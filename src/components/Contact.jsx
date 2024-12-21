@@ -8,12 +8,15 @@ function Contact() {
       </h1>
       <form className="space-x-2">
         <input
-          className="border-black p-2 m-2 focus:border-blue-600   "
+          className="border-black p-2 m-2 focus:border-blue-600 rounded-lg "
           placeholder="name"
         />
-        <input className="border-black p-2 m-2 " placeholder="contact number" />
         <input
-          className="border-black p-2 m-2 "
+          className="border-black p-2 m-2 rounded-lg"
+          placeholder="contact number"
+        />
+        <input
+          className="border-black p-2 m-2 rounded-lg"
           placeholder="what you wanna say"
         />
         <button className="bg-red-600 text-white rounded-lg p-2 m-2">
