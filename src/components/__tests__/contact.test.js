@@ -13,7 +13,22 @@ test("should load contact us component", () => {
 test("should load button inside contact component", () => {
   render(<Contact />);
 
-  const button = screen.getByText("random");
+  const button = screen.getByRole("button");
 
   expect(button).toBeInTheDocument();
+});
+
+test("should load input name inside Contact component", () => {
+  render(<Contact />);
+
+  const InputName = screen.getByPlaceholderText("name");
+
+  expect(InputName).toBeInTheDocument();
+});
+
+test("should load 3 input boxes on the contact component", () => {
+  render(<Contact />);
+  const inputBoxes = screen.getAllByRole("textbox");
+  console.log(inputBoxes);
+  expect(inputBoxes).toBeInTheDocument();
 });
