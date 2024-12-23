@@ -29,6 +29,6 @@ test("should load input name inside Contact component", () => {
 test("should load 3 input boxes on the contact component", () => {
   render(<Contact />);
   const inputBoxes = screen.getAllByRole("textbox");
-  console.log(inputBoxes);
-  expect(inputBoxes).toBeInTheDocument();
+  console.log(inputBoxes.length);
+  expect(inputBoxes.length).toBe(3);
 });
