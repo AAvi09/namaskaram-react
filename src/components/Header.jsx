@@ -2,16 +2,16 @@ import React from "react";
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import MyImage from "../images/istockphoto-1319625327-612x612.jpg";
-import pouchImage from "../images/Save-Money-On-Groceries_UBC-Food-Services.jpg";
+// import MyImage from "../images/istockphoto-1319625327-612x612.jpg";
+// import pouchImage from "../images/Save-Money-On-Groceries_UBC-Food-Services.jpg";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext";
-import { useContext } from "react";
+// import UserContext from "../utils/UserContext";
+// import { useContext } from "react";
 import { useSelector } from "react-redux";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
-  const { loggedInUser } = useContext(UserContext);
+  // const { loggedInUser } = useContext(UserContext);
 
   const onlineStatus = useOnlineStatus();
 
@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <div className="flex h-[150px] justify-between bg-white-800 relative shadow-lg mb-3">
-      <div className="left-image">
+      {/* <div className="left-image">
         <img
           src={MyImage}
           className="w-1/2 h-1/2 object-cover  rounded-full rotate-[-10deg] transition ease-in-out duration-300 hover:scale-105"
@@ -31,7 +31,7 @@ const Header = () => {
           src={pouchImage}
           className="w-3/2 h-1/2 object-cover rounded-full rotate-[-15deg] transition ease-in-out duration-300 hover:scale-105"
         />
-      </span>
+      </span> */}
       <div className="absolute top-[50%] left-[5%] transform -translate-y-1/2 justify-between p-50">
         <Link to="/">
           <img
@@ -98,7 +98,7 @@ const Header = () => {
             >
               {loginBtn}
             </button>
-            <li>{loggedInUser}</li>
+            {/* <li>{loggedInUser}</li> */}
           </li>
         </ul>
       </div>
